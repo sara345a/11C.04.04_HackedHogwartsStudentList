@@ -12,21 +12,23 @@ img {
 }
 
 body {
-  background-color: rgb(35, 35, 35);
+  background: linear-gradient(
+    90deg,
+    rgba(5, 5, 5, 1) 0%,
+    rgba(30, 30, 30, 1) 50%,
+    rgba(5, 5, 5, 1) 100%
+  );
 }
 
 /*things in header*/
-#headline img {
-  width: 85%;
-}
-
-#all_houses {
-  align-items: center;
+#banner {
+  width: 400px;
 }
 
 #all_houses img {
-  width: 120%;
+  width: 220px;
   align-items: center;
+  filter: drop-shadow(1px 2px 3px rgba(255, 255, 0, 0.211));
 }
 
 #headline {
@@ -41,37 +43,54 @@ h1 {
   font-size: 13px;
 }
 
-#sortinglist,
-#filterbtns {
+#filterbtns,
+#filter_wrapper {
   display: flex;
   justify-content: center;
+  flex-direction: row;
+  flex-flow: row wrap;
+}
+
+#sortingList {
+  max-height: 30px;
+  min-height: 23px;
+  background: #f4ab37;
+  border-color: #c47400;
+  border-radius: 40px;
+  margin: 0.5vw;
+  border-width: 0.5vw;
+  cursor: pointer;
 }
 
 button.filter {
   background: #f4ab37;
   border-radius: 40px;
-  margin: 2vw;
+  margin: 0.5vw;
   border-width: 0.5vw;
   border-color: #c47400;
+  width: 33%;
+  max-height: 70%;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .container {
   width: 90vw;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 30px auto;
   display: grid;
   grid-column-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  border-color: #fcff9e;
+  background-color: #323232;
 }
 
 #student_article {
-  border: 1px solid black;
-  padding: 10px;
-  margin: 5px;
+  margin: 0.5vw;
+  border-color: #0a0a0a;
   border-radius: 15px;
   text-align: center;
   cursor: pointer;
-  background-color: rgb(59, 59, 59);
 }
 
 /*************************POPUP***********************/
@@ -111,13 +130,20 @@ button.filter {
   cursor: pointer;
 }
 
+@media screen and (min-width: 627px) {
+  #filterbtns,
+  #filter_wrapper {
+    flex-flow: nowrap;
+  }
+}
+
 @media screen and (min-width: 700px) {
   #headline img {
-    max-width: 500px;
+    max-width: 400px;
   }
 
   #all_houses img {
-    width: 120%;
+    width: 250px;
   }
 
   h1 {
@@ -137,5 +163,19 @@ button.filter {
 
   button {
     border-width: 0.3vw;
+  }
+
+  button.filter {
+    width: 90px;
+  }
+
+  #all_houses img {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  button.filter {
+    width: 120px;
   }
 }

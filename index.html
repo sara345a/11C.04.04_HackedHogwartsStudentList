@@ -14,35 +14,37 @@
     
     <div id="headline">
       <div id="all_houses">
-        <img src="all_houses2.svg" alt="allhouses" />
+        <img src="all_houses3.svg" alt="allhouses logo" />
       </div>
       <!-- <h1>Hogwarts School of Witchcraft and Wizardry</h1> -->
-      <img src="banner2.svg" alt="banner" />
+      <img id="banner" src="banner2.svg" alt="banner" />
     </div>
 </header>
 
   <body>
 
-
-    <select name="sortingList" id="sortingList">
-      <option>Sorting</option>
-      <option value="firstnamea-z">Firstname A-Z</option>
-      <option value="firstnamez-a">Firstname Z-A</option>
-      <option value="lastnamea-z">Lastname A-Z</option>
-      <option value="lastnamez-a">Lastname Z-A</option>
-      <option value="housea-z">House A-Z</option>
-      <option value="housez-a">House Z-A</option>
-    </select>
-
+<div id="filter_wrapper">
+    
     <div id="filterbtns">
       <button class="filter" data-action="filter" data-filter="all">All</button>
       <button class="filter" data-action="filter" data-filter="gryffindor">Gryffindor</button>
       <button class="filter" data-action="filter" data-filter="hufflepuff"> Hufflepuff</button>
       <button class="filter" data-action="filter" data-filter="ravenclaw">Ravenclaw</button>
       <button class="filter" data-action="filter" data-filter="slytherin">Slytherin</button>
-      <button class="filter" data-action="filter" data-filter="unexpelled">Attending Students</button>
-      <button class="filter" data-action="filter" data-filter="expelled">Expelled Students</button>
+      <button class="filter" data-action="filter" data-filter="unexpelled">Attending</button>
+      <button class="filter" data-action="filter" data-filter="expelled">Expelled</button>
     </div>
+
+    <select name="sortingList" id="sortingList">
+        <option>Sorting</option>
+        <option value="firstnamea-z">Firstname A-Z</option>
+        <option value="firstnamez-a">Firstname Z-A</option>
+        <option value="lastnamea-z">Lastname A-Z</option>
+        <option value="lastnamez-a">Lastname Z-A</option>
+        <option value="housea-z">House A-Z</option>
+        <option value="housez-a">House Z-A</option>
+      </select>
+</div>
 
     <section class="container"></section>
 
