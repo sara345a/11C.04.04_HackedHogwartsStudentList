@@ -3,6 +3,20 @@
   box-sizing: border-box;
 }
 
+#search_container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 20px;
+}
+#search,
+#search_btn {
+  background: #f4ab37;
+  border-color: #c47400;
+  border-radius: 40px;
+  border-width: 0.2vw;
+  max-width: 20vw;
+}
+
 img {
   width: 100%;
 }
@@ -37,10 +51,12 @@ body {
   flex-direction: column;
 }
 
-h1 {
+h1,
+h2,
+p {
   font-family: "Cinzel", serif;
   font-weight: 2100;
-  font-size: 13px;
+  font-size: 25px;
 }
 
 #filterbtns,
@@ -135,7 +151,8 @@ button.filter {
   #filter_wrapper {
     flex-flow: nowrap;
   }
-}
+
+  
 
 @media screen and (min-width: 700px) {
   #headline img {
@@ -148,6 +165,10 @@ button.filter {
 
   h1 {
     font-size: 25px;
+  }
+
+  #search_btn {
+    margin-right: 3vw;
   }
 }
 
@@ -162,7 +183,7 @@ button.filter {
   }
 
   button {
-    border-width: 0.3vw;
+    border-width: 0.2vw;
   }
 
   button.filter {
@@ -177,5 +198,10 @@ button.filter {
 @media screen and (min-width: 1400px) {
   button.filter {
     width: 120px;
+  }
+
+  #sortingList,
+  button.filter {
+    border-width: 0.3vw;
   }
 }

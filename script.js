@@ -200,6 +200,10 @@ function prepareObjects(jsonData) {
       nickname: "-not set yet-",
       photo: "-not set yet-",
       house: "-not set yet-",
+        expelled: false,
+  member: "",
+  prefect: false,
+  blood: false,
     };
     
 
