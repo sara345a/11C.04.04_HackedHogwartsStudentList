@@ -14,6 +14,7 @@
   border-radius: 40px;
   border-width: 0.2vw;
   max-width: 140px;
+  max-height: 25px;
   margin-right: 2vw;
 }
 
@@ -51,12 +52,11 @@ body {
   flex-direction: column;
 }
 
-h1,
-h2,
-p {
+h2 {
   font-family: "Cinzel", serif;
   font-weight: 2100;
   font-size: 25px;
+  color: #f4ab37;
 }
 
 #filterbtns,
@@ -65,6 +65,13 @@ p {
   justify-content: center;
   flex-direction: row;
   flex-flow: row wrap;
+}
+
+button:hover,
+button:focus,
+button:active {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(255, 255, 0, 0.211);
 }
 
 #sortingList {
@@ -97,8 +104,10 @@ button.filter {
   display: grid;
   grid-column-gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  border-color: #fcff9e;
-  background-color: #323232;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #c47400;
+  background-color: #202020;
 }
 
 #student_article {
@@ -151,56 +160,60 @@ button.filter {
   #filter_wrapper {
     flex-flow: nowrap;
   }
+}
 
-  @media screen and (min-width: 700px) {
-    #headline img {
-      max-width: 400px;
-    }
-
-    #all_houses img {
-      width: 250px;
-    }
-
-    h1 {
-      font-size: 25px;
-    }
-
-    #search_btn {
-      margin-right: 3vw;
-    }
+@media screen and (min-width: 700px) {
+  #headline img {
+    max-width: 400px;
   }
 
-  @media screen and (min-width: 910px) {
-    h1 {
-      font-size: 32px;
-    }
-
-    #attending_expelled_buttons {
-      padding: 1px;
-      margin: 1px;
-    }
-
-    button {
-      border-width: 0.2vw;
-    }
-
-    button.filter {
-      width: 90px;
-    }
-
-    #all_houses img {
-      width: 300px;
-    }
+  #all_houses img {
+    width: 250px;
   }
 
-  @media screen and (min-width: 1400px) {
-    button.filter {
-      width: 120px;
-    }
+  h1 {
+    font-size: 25px;
+  }
 
-    #sortingList,
-    button.filter {
-      border-width: 0.3vw;
-    }
+  #search_btn {
+    margin-right: 3vw;
+  }
+}
+
+@media screen and (min-width: 910px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  #attending_expelled_buttons {
+    padding: 1px;
+    margin: 1px;
+  }
+
+  button {
+    border-width: 0.2vw;
+  }
+
+  button.filter {
+    width: 90px;
+  }
+
+  #all_houses img {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  button.filter {
+    width: 120px;
+  }
+
+  #sortingList,
+  button.filter {
+    border-width: 0.3vw;
+  }
+
+  .search {
+    margin-right: 120px;
   }
 }
