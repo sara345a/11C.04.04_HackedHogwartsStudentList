@@ -12,6 +12,9 @@ let temp = document.querySelector("template");
 let container = document.querySelector("section");
 let filterType = "all";
 let sortBy = "sorting";
+const search = document.querySelector(".search");
+search.addEventListener("input", startSearch);
+let numberOfStudents = document.querySelector(".studentnumber");
 
 function initPage() {
   console.log("ready");
@@ -21,6 +24,22 @@ function initPage() {
   fetchStudentData();
 }
 
+//Search 
+function startSearch(event) {
+  let searchList = allStudents.filter((student) => {
+    let name = "";
+    if (student.lastname === null) {
+      name = student.firstname;
+    } else {
+      name = student.firstname + " " + student.lastname;
+    }
+    return name.toLowerCase().includes(event.target.value);
+  });
+
+  //Show number of students
+  numberOfStudents.textContent = `Students: ${searchList.length}`;
+  showStudentList(searchList);
+}
 
 //------------------FILTER FUNCTIONS START------------------------//
 function readBtns() {
@@ -338,12 +357,17 @@ function showStudentList(students) {
     if (student.photo != null) {
       klon.querySelector("img").src = "images/" + student.photo;
     }
-    klon
-      .querySelector("article")
-      .addEventListener("click", () => openSingleStudent(student));
+    klon.querySelector("article").addEventListener("click", () => openSingleStudent(student));
 
     container.appendChild(klon);
   });
+
+  
+
+
+
+
+
 }
 
 function openSingleStudent(student) {

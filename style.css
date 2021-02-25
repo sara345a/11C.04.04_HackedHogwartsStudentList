@@ -8,13 +8,13 @@
   justify-content: flex-end;
   margin: 10px 20px;
 }
-#search,
-#search_btn {
+.search {
   background: #f4ab37;
   border-color: #c47400;
   border-radius: 40px;
   border-width: 0.2vw;
-  max-width: 20vw;
+  max-width: 140px;
+  margin-right: 2vw;
 }
 
 img {
@@ -152,56 +152,55 @@ button.filter {
     flex-flow: nowrap;
   }
 
-  
+  @media screen and (min-width: 700px) {
+    #headline img {
+      max-width: 400px;
+    }
 
-@media screen and (min-width: 700px) {
-  #headline img {
-    max-width: 400px;
+    #all_houses img {
+      width: 250px;
+    }
+
+    h1 {
+      font-size: 25px;
+    }
+
+    #search_btn {
+      margin-right: 3vw;
+    }
   }
 
-  #all_houses img {
-    width: 250px;
+  @media screen and (min-width: 910px) {
+    h1 {
+      font-size: 32px;
+    }
+
+    #attending_expelled_buttons {
+      padding: 1px;
+      margin: 1px;
+    }
+
+    button {
+      border-width: 0.2vw;
+    }
+
+    button.filter {
+      width: 90px;
+    }
+
+    #all_houses img {
+      width: 300px;
+    }
   }
 
-  h1 {
-    font-size: 25px;
-  }
+  @media screen and (min-width: 1400px) {
+    button.filter {
+      width: 120px;
+    }
 
-  #search_btn {
-    margin-right: 3vw;
-  }
-}
-
-@media screen and (min-width: 910px) {
-  h1 {
-    font-size: 32px;
-  }
-
-  #attending_expelled_buttons {
-    padding: 1px;
-    margin: 1px;
-  }
-
-  button {
-    border-width: 0.2vw;
-  }
-
-  button.filter {
-    width: 90px;
-  }
-
-  #all_houses img {
-    width: 300px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  button.filter {
-    width: 120px;
-  }
-
-  #sortingList,
-  button.filter {
-    border-width: 0.3vw;
+    #sortingList,
+    button.filter {
+      border-width: 0.3vw;
+    }
   }
 }

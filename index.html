@@ -12,8 +12,7 @@
 
   <header>
 <div id="search_container">
-    <input type="search" placeholder="Search.." id="search" name="search" /> 
-    <button id="search_btn">search</button>
+    <input class="search" type="search" placeholder="Search for student..."/>
 </div>
     
     
@@ -27,6 +26,7 @@
 </header>
 
   <body>
+    <div class="studentnumber"></div>
 
 <div id="filter_wrapper">
     <div id="filterbtns">
@@ -54,8 +54,12 @@
 
     <template>
       <article id="student_article">
+          <p class="ifExpelled"></p>
         <img src="" alt="" />
-        <h2 class="fullname"></h2>
+        <p class="fullname"></h2>
+        <p class="house"></p>
+        <button class="make_prefect">Make prefect</button>
+        <button class="expel">Expel</button>
       </article>
     </template>
 
