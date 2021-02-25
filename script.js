@@ -7,6 +7,10 @@ window.addEventListener("DOMContentLoaded", initPage);
 //Array
 const allStudents = [];
 
+//Expelled student list
+let expelledstudents = []; 
+
+
 //Global variables
 let temp = document.querySelector("template");
 let container = document.querySelector("section");
@@ -78,6 +82,8 @@ function filterList(filterredList) {
     filterredList = allStudents.filter(isRavenclaw);
   } else if (filterType === "slytherin") {
     filterredList = allStudents.filter(isSlytherin);
+  } else if (filterType === "expelled"){
+    filterredList = allStudents.filter(isExpelled);
   }
   //TODO: filter on expelled and unexpelled
 
@@ -357,7 +363,7 @@ function showStudentList(students) {
     if (student.photo != null) {
       klon.querySelector("img").src = "images/" + student.photo;
     }
-    klon.querySelector("article").addEventListener("click", () => openSingleStudent(student));
+    klon.querySelector(".details").addEventListener("click", () => openSingleStudent(student));
 
     container.appendChild(klon);
   });
