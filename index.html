@@ -64,6 +64,8 @@
       </article>
     </template>
 
+
+
     <section id="popup">
       <article>
         <button id="close">X</button>
@@ -73,9 +75,25 @@
           <p>Blod-status: <span class="blodstatus"></span></p>
           <p>House: <span class="house"></span></p>
           <img class="house_crest" src="" alt="" />
+          <img class="prefect-icon" src="prefect-badge.png" alt="">
         </div>
+        <div id="popupbuttons">
+            <p class="popupPrefect"></p>
+            <button id="expellbutton" class="raise">Expell</button>
+          </div>
       </article>
     </section>
+
+    <section class="popup_warning prefect_warning">
+        <article>
+          <button class="close_button">X</button>
+            <h1 >Warning!</h1>
+            <p>There can only be two prefects of each house!</p>
+            <button data-action="remove1">Remove first</button>
+            <button data-action="remove2">Remove second</button>
+          </div>
+        </article>
+      </section>
 
     <footer>
       Pictures from:

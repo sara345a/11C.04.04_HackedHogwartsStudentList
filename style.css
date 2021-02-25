@@ -155,6 +155,14 @@ button.filter {
   cursor: pointer;
 }
 
+.icon-grey {
+  filter: grayscale(100%);
+}
+
+.icon-color {
+  filter: grayscale(0%);
+}
+
 @media screen and (min-width: 627px) {
   #filterbtns,
   #filter_wrapper {

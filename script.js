@@ -111,6 +111,7 @@ function isSlytherin(house) {
   return house.house === "Slytherin";
 }
 
+
 function selectedSort(event) {
   //checks what option is clicked
   sortBy = event;
@@ -204,6 +205,19 @@ function buildList() {
 
 
 
+//-----ADD-ONS SUCH AS EXPELLED, SQUAD, PREFICT START-----------//
+
+
+function isExpelled(expelled){
+  //returns true if a student is expelled
+  return expelled.expelled === "expelled"; 
+}
+
+function clickAddAsPrefect(){
+  document.querySelector(".prefect-icon").classList.remove("icon-grey");
+  document.querySelector(".prefect-icon").classList.add("icon-color");}
+
+
 async function fetchStudentData() {
     fetch("https://petlatkea.dk/2020/hogwarts/students.json")
     .then( response => response.json() )
@@ -225,10 +239,11 @@ function prepareObjects(jsonData) {
       nickname: "-not set yet-",
       photo: "-not set yet-",
       house: "-not set yet-",
-        expelled: false,
-  member: "",
-  prefect: false,
-  blood: false,
+      gender: " ",
+      expelled: false,
+      member: "",
+      prefect: false,
+      blood: false,
     };
     
 
@@ -342,6 +357,10 @@ function prepareObjects(jsonData) {
 
     //House is already a seperate string so just adds the age to the object
     student.house = house.substring(0, 1).toUpperCase() + house.substring(1);
+
+     //Gender 
+     student.gender = jsonObject.gender; 
+
 
     //Adds all objects (students) into the array
     allStudents.push(student);
