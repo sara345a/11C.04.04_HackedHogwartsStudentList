@@ -50,6 +50,8 @@
       </select>
 </div>
 
+<h2 id="showedStudents">Now showing X students</h2>
+
     <section class="container"></section>
 
     <template>
@@ -58,8 +60,8 @@
         <img src="" alt="" />
         <h2 class="fullname"></h2>
         <p class="house"></p>
-        <button class="make_prefect">Make prefect</button>
-        <button class="expel">Expel</button>
+        <!-- <button class="make_prefect">Make prefect</button>
+        <button class="expel">Expel</button> -->
         <button class="details">See details</button>
       </article>
     </template>
@@ -70,30 +72,39 @@
       <article>
         <button id="close">X</button>
         <img id="popup_student_pic" src="" alt="" />
-        <div>
-          <h2></h2>
-          <p>Blod-status: <span class="blodstatus"></span></p>
-          <p>House: <span class="house"></span></p>
-          <img class="house_crest" src="" alt="" />
-          <img class="prefect-icon" src="prefect-badge.png" alt="">
-        </div>
-        <div id="popupbuttons">
-            <p class="popupPrefect"></p>
-            <button id="expellbutton" class="raise">Expell</button>
+    
+            <div id="student_details">
+                <h2></h2>
+                <p>Blod-status: <span class="blodstatus"></span></p>
+                <p>House: <span class="house"></span></p>
+                <p class="gender"></p>
+                <p class="bloodstatus"></p>
+                <p class="prefect"></p>
+                <p class="inqsquad"></p>
+                <p class="expelled" style="color: red"></p>
+            </div>
+            <div class="" id="popup_buttons">
+                <img src="" alt="" class="crest"/>
+                <img src="" alt="" class="hidden" id="prefecticon"/>
+              
+              <button id="prefect_button">Make student prefect</button>
+              <button id="inqSquad_button">Add to Inquisitional Squad</button>
+              <button id="expell_button">EXPELL STUDENT</button>
+            </div>
           </div>
       </article>
     </section>
 
-    <section class="popup_warning prefect_warning">
-        <article>
-          <button class="close_button">X</button>
-            <h1 >Warning!</h1>
-            <p>There can only be two prefects of each house!</p>
-            <button data-action="remove1">Remove first</button>
-            <button data-action="remove2">Remove second</button>
-          </div>
-        </article>
-      </section>
+    <div id="prefectConflict" class="dialog">
+        <div class="dialogcontent">
+          <button class="closebutton_dialog">close</button>
+          <h1>You can onle have one prefect of each gender from each house</h1>
+          <h2>Remove this one</h2>
+          <p><button data-action="remove">remove</button> <span class="student">NAME, the TYPE</span></p>
+        </div>
+      </div>
+
+   
 
     <footer>
       Pictures from:

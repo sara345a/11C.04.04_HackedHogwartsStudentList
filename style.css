@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -21,6 +25,13 @@
 img {
   width: 100%;
 }
+
+#showedStudents {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 #student_article img {
   width: 25%;
   margin: 10px;
@@ -119,6 +130,10 @@ button.filter {
 }
 
 /*************************POPUP***********************/
+#prefecticon {
+  width: 50px;
+  background-image: url(prefect-badge.png);
+}
 
 #popup {
   position: fixed;
