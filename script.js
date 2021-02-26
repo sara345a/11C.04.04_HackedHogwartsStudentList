@@ -2,7 +2,10 @@
 
 window.addEventListener("DOMContentLoaded", initPage);
 
-
+const link = "https://petlatkea.dk/2021/hogwarts/students.json";
+const bloodstatuslink = "https://petlatkea.dk/2021/hogwarts/families.json";
+let json;
+let bloodstatus;
 
 //Array
 let allStudArray = [];
@@ -22,11 +25,12 @@ let studentTemplate = {
   nickname: "-not set yet-",
   photo: "-not set yet-",
   house: "-not set yet-",
+  bloodstatus: "",
   gender: " ",
   expelled: false,
   member: "",
   prefect: false,
-  blood: false,
+ 
 };
 
 
@@ -48,12 +52,17 @@ function initPage() {
 }
 
 async function fetchStudentData() {
-  fetch("https://petlatkea.dk/2020/hogwarts/students.json")
-  .then( response => response.json() )
-  .then( jsonData => { 
-      // when loaded, prepare objects
-      prepareObjects(jsonData);
-  });
+  const respons = await fetch(link);
+  json = await respons.json();
+
+  const respons1 = await fetch(bloodstatuslink);
+  bloodstatus = await respons1.json();
+  prepareObjects(json);
+}
+
+async function fetchBloodstatusData() {
+  const respons = await fetch(bloodstatuslink);
+  bloodstatus = await respons.json();
 }
 
 //Search 
@@ -224,6 +233,7 @@ function sortByHouseZA(houseA, houseB) {
   }
 }
 
+
 function buildList() {
   let currentList = filterList(allStudArray);
   currentList = sortList(currentList);
@@ -242,7 +252,6 @@ function prepareObjects(jsonData) {
     //Split "fullname" into smaller parts after each space. So we get name, type, description and age
     const fullName = jsonObject.fullname.toLowerCase().trim();
     const splitFullName = fullName.split(" ");
-    const house = jsonObject.house.toLowerCase().trim();
 
     const firstSpaceBeforeName = fullName.indexOf(" ");
     const lastSpaceBeforeName = fullName.lastIndexOf(" ");
@@ -345,11 +354,18 @@ function prepareObjects(jsonData) {
       student.photo = null;
     }
 
+    const house = jsonObject.house.toLowerCase().trim();
+    student.house = house.substring(0, 1).toUpperCase() + house.substring(1);
+
     //House is already a seperate string so just adds the age to the object
     student.house = house.substring(0, 1).toUpperCase() + house.substring(1);
 
      //Gender 
      student.gender = jsonObject.gender; 
+
+     //blood
+     student.bloodstatus = matchBloodstatusWithStudentName(student);
+
 
 
     //Adds all objects (students) into the array
@@ -358,18 +374,30 @@ function prepareObjects(jsonData) {
   showStudentList(allStudArray);
 }
 
+
+function matchBloodstatusWithStudentName(student) {
+  if (bloodstatus.half.indexOf(student.lastname) != -1) {
+    return "Half-blood";
+  } else if (bloodstatus.pure.indexOf(student.lastname) != -1) {
+    return "Pure-blood";
+  } else {
+    return "Muggle-born";
+  }
+}
+
+
 function showStudentList(students) {
   console.log(students);
   container.innerHTML = "";
 
     //showing the number of students showed on the list
-    if (students.length === 1) {
-      document.querySelector("#showedStudents").textContent =
-        "Now showing " + students.length + " students";
-    } else {
-      document.querySelector("#showedStudents").textContent =
-        "Now showing " + students.length + " students";
-    }
+  if (students.length === 1) {
+    document.querySelector("#showedStudents").textContent =
+      "Now showing " + students.length + " students";
+  } else {
+    document.querySelector("#showedStudents").textContent =
+      "Now showing " + students.length + " students";
+  }
 
 
 
@@ -384,17 +412,22 @@ function showStudentList(students) {
     if (student.photo != null) {
       klon.querySelector("img").src = "images/" + student.photo;
     }
+
+    klon.querySelector(".house").textContent = student.house;
     klon.querySelector(".details").addEventListener("click", () => openSingleStudent(student));
 
     container.appendChild(klon);
   });
+
+
 }
+
 
 function openSingleStudent(student) {
   document.querySelector("#prefect_button").removeEventListener("click", prefectOff);
     document.querySelector("#prefect_button").removeEventListener("click", makePrefect);
     document.querySelector("#expell_button").removeEventListener("click", expell);
-
+    popup.querySelector("#house_crest").src = student.house + ".svg";
 
   popup.style.display = "block";
   if (student.middlename == null && student.nickname == null) {
@@ -417,7 +450,7 @@ function openSingleStudent(student) {
       " " +
       student.lastname;
   }
-  //popup.querySelector(".blodstatus").textContent = student.house;
+  popup.querySelector(".blodstatus").textContent = student.bloodstatus;
   popup.querySelector(".house").textContent = student.house;
   //popup.querySelector(".house_crest").src = ;
   if (student.photo != null) {
@@ -529,7 +562,7 @@ function checkingPrefectNumbers(student) {
     openSingleStudent(student);
     // console.log(student);
   } else if (prefectArray.length > 1) {
-    document.querySelector("#prefectConflict .student").textContent = `${student.firstName} ${student.lastName}`;
+    document.querySelector("#onlytwoprefects .student").textContent = `${student.firstName} ${student.lastName}`;
   }
 }
 
