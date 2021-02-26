@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", initPage);
 const link = "https://petlatkea.dk/2021/hogwarts/students.json";
 const bloodstatuslink = "https://petlatkea.dk/2021/hogwarts/families.json";
 let json;
-let bloodstatus;
+
 
 //Array
 let allStudArray = [];
@@ -13,10 +13,7 @@ let allStudArray = [];
 //Expelled student list
 let explldStudArray = []; 
 
-let prefectsGryffindor = [];
-let prefectsSlytherin = [];
-let prefectsRavenclaw = [];
-let prefectsHufflepuff = [];
+let bloodstatus;
 
 let studentTemplate = {
   firstname: "-not set yet-",
