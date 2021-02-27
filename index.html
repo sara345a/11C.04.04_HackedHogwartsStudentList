@@ -70,26 +70,43 @@
       <article>
         <button id="close">X</button>
         <img id="popup_student_pic" src="" alt="" />
-        
+        <p id="expelled_text" class ="hide" style="color: red" >THIS STUDENT IS EXPELLED</p>
+        <p id="prefect_text" class ="hide" style="color: rgb(255, 187, 0)" >THIS STUDENT A PREFECT</p>
+        <p id="squad_text" class ="hide" style="color: rgb(255, 187, 0)" >THIS STUDENT IS A PART OF SQUAD</p>
     
             <div id="student_details">
                 <h2></h2>
                 <p>Blod-status: <span class="blodstatus"></span></p>
                 <p>House: <span class="house"></span></p>
-                <img id="house_crest" src="" alt="" />
+                <img id="house_crest" src="" alt=""/>
                 <p class="gender"></p>
-                <p class="prefect"></p>
+                <p class="prefect">
                 <p class="inqsquad"></p>
-                <p class="expelled" style="color: red"></p>
+                <p class="expelled"></p>
             </div>
             <div class="" id="popup_buttons">
-              <button id="prefect_button">Make student prefect</button>
-              <button id="inqSquad_button">Add to Inquisitional Squad</button>
-              <button id="expell_button">EXPELL STUDENT</button>
+              <button id="prefectbtn" class="clickedbutton">Make student prefect</button>
+              <button id="isbtn" class="clickedbutton">Add to Inquisitional Squad</button>
+              <button id="expellbtn" class ="clickedbutton">Expell Student</button>
             </div>
           </div>
       </article>
     </section>
+
+
+    <div id="onlytwoprefects" class="hide">
+      <div class="overlay">
+        <div id="dialogcontent" class="dialogcontent">
+          <button class="closebutton">X</button>
+          <h1 id="warning">You can only have two prefects pr house and only one of each gender!</h1>
+          <h2>Remove one to make another one prefect</h2>
+          <p>
+            <button data-action="remove1">remove</button>
+            <span class="prefect1">NAME</span>
+          </p>
+        </div>
+      </div>
+    </div>
 
 
     <footer>
