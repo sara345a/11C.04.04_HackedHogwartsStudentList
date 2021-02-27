@@ -76,8 +76,8 @@
     
             <div id="student_details">
                 <h2></h2>
-                <p>Blod-status: <span class="blodstatus"></span></p>
-                <p>House: <span class="house"></span></p>
+                 <p>House: <span class="house"></span></p>
+                 <p>Blod-status: <span class="blodstatus"></span></p>
                 <img id="house_crest" src="" alt=""/>
                 <p class="gender"></p>
                 <p class="prefect">
@@ -97,9 +97,12 @@
     <div id="onlytwoprefects" class="hide">
       <div class="overlay">
         <div id="dialogcontent" class="dialogcontent">
-          <button class="closebutton">X</button>
-          <h1 id="warning">You can only have two prefects pr house and only one of each gender!</h1>
-          <h2>Remove one to make another one prefect</h2>
+          <div id="closebutton_container">
+            <button class="closebutton">X</button>
+          </div>
+          <h2>WARNING!</h2>
+          <h3 id="warning">You can only have two prefects pr house and only one of each gender!</h1>
+          <h3 id="remove">Remove one to make another one prefect</h2>
           <p>
             <button data-action="remove1">remove</button>
             <span class="prefect1">NAME</span>

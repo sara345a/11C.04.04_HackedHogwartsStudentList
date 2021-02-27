@@ -446,10 +446,17 @@ function openSingleStudent(student) {
   }
 
 //show text from HTML, if the student is viewed again//
-  if (student.expelled === true) {document.querySelector("#expelled_text").classList.remove("hide");} 
-  if (student.prefect === true) {document.querySelector("#prefect_text").classList.remove("hide");} 
-  if (student.squad === true) {document.querySelector("#squad_text").classList.remove("hide");} 
-  
+  if (student.expelled === true) {
+    document.querySelector("#expelled_text").classList.remove("hide");
+  }else {document.querySelector("#expelled_text").classList.add("hide"); } 
+//--""--
+  if (student.prefect === true) {
+    document.querySelector("#prefect_text").classList.remove("hide");
+  }else {document.querySelector("#prefect_text").classList.add("hide"); } 
+//--""--
+  if (student.squad === true) {
+    document.querySelector("#squad_text").classList.remove("hide");
+  }else {document.querySelector("#squad_text").classList.add("hide"); } 
 
 
 
@@ -477,8 +484,9 @@ function openSingleStudent(student) {
       " " +
       student.lastname;
   }
-  popup.querySelector(".blodstatus").textContent = student.bloodstatus;
+  
   popup.querySelector(".house").textContent = student.house;
+  popup.querySelector(".blodstatus").textContent = student.bloodstatus;
   popup.querySelector("#house_crest").src =
     "housecrests/" + student.house + ".svg";
   if (student.photo != null) {
