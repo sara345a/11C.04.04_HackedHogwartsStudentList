@@ -80,7 +80,7 @@ function startSearch(event) {
 
   //Show number of students
   numberOfDisplayedStudents.textContent = `Students: ${searchList.length}`;
-  showStudentList(searchList);
+  displayStudentList(searchList);
 }
 
 //=====================FILTER FUNCTIONS START================================//
@@ -238,7 +238,7 @@ function buildList() {
   let currentList = filteredList(allStudArray);
   currentList = sortList(currentList);
 
-  showStudentList(currentList);
+  displayStudentList(currentList);
 }
 //------------------FILTER FUNCTIONS END------------------------//
 
@@ -369,7 +369,7 @@ function prepareObjects(jsonData) {
     //Adds all objects (students) into the array
     allStudArray.push(student);
   });
-  showStudentList(allStudArray);
+  displayStudentList(allStudArray);
 }
 
 
@@ -384,7 +384,7 @@ function matchBloodstatusWithStudentName(student) {
 }
 
 
-function showStudentList(students) {
+function displayStudentList(students) {
   console.log(students);
   container.innerHTML = "";
 
@@ -412,7 +412,7 @@ function showStudentList(students) {
     }
 
     klon.querySelector(".house").textContent = student.house;
-    klon.querySelector(".details").addEventListener("click", () => openSingleStudent(student));
+    klon.querySelector(".details").addEventListener("click", () => displaySingleStudentPopUp(student));
 
     container.appendChild(klon);
   });
@@ -421,7 +421,7 @@ function showStudentList(students) {
 }
 
 
-function openSingleStudent(student) {
+function displaySingleStudentPopUp(student) {
   popup.style.display = "block";
 
   //make it visible that the expelledbutton, prefectbutton, squadbutton is clicked//
@@ -492,7 +492,7 @@ function openSingleStudent(student) {
   //expell, prefect and squad
   document.querySelector("#expellbtn").addEventListener("click", expell);
   document.querySelector("#prefectbtn").addEventListener("click", togglePrefect);
-  document.querySelector("#isbtn").addEventListener("click", toggleSquad);
+  document.querySelector("#isbtn").addEventListener("click", toggleIqMember);
 
   document.querySelector("#close").addEventListener("click", () => {
     popup.style.display = "none";
@@ -507,7 +507,7 @@ function openSingleStudent(student) {
 }
 
 
-  function expell() {
+  function expellStudent() {
     if (chosenStudent.lastName != "Nielsen") {
       //removes expelled student form allStudArray list
       if (chosenStudent.expelled === false) {
@@ -538,7 +538,7 @@ function togglePrefect() {
   if (chosenStudent.expelled === false) {
     const index = allStudArray.indexOf(chosenStudent);
     if (chosenStudent.prefect === false) {
-      housePrefectCheck();
+      checkIfStudentCanBePrefect();
     } else {
       removePrefect(chosenStudent);
     }
@@ -546,7 +546,7 @@ function togglePrefect() {
     alert("This student is expelled! An expelled students can't be a Prefect!");
   }
 
-  function housePrefectCheck() {
+  function checkIfStudentCanBePrefect() {
     console.log("chekking for house prefects");
     const houseprefects = [];
     allStudArray.filter((student) => {
@@ -573,7 +573,7 @@ function togglePrefect() {
     } else {
       // allStudArray[index].prefect = true;
       console.log("add prefect");
-      makePrefect(chosenStudent);
+      makeStudentPrefect(chosenStudent);
     }
   }
 
@@ -584,7 +584,7 @@ function togglePrefect() {
     popup.querySelector(".prefect").classList.add("hide");
   }
 
-  function makePrefect(studentPrefect) {
+  function makeStudentPrefect(studentPrefect) {
     
     document.querySelector("#prefectbtn").classList.add("clickedbutton");
     const index = allStudArray.indexOf(studentPrefect);
@@ -614,7 +614,7 @@ function togglePrefect() {
     //if remove other:
     function clickRemoveOther() {
       removePrefect(other);
-      makePrefect(chosenStudent);
+      makeStudentPrefect(chosenStudent);
       buildList();
       closeOnlyTwoPrefectsDialog();
     }
@@ -622,14 +622,14 @@ function togglePrefect() {
 }
 
 
-function toggleSquad() {
+function toggleIqMember() {
   console.log("toggle squad");
   const index = allStudArray.indexOf(chosenStudent);
   if (chosenStudent.expelled === false) {
     if (chosenStudent.squad === false) {
-      houseSquadCheck();
+      checkIfStudentCanJoinIqSquad();
     } else {
-      removeSquad();
+      removeIqMember();
     }
   } else {
     alert(
@@ -637,13 +637,13 @@ function toggleSquad() {
     );
   }
 
-  function houseSquadCheck() {
+  function checkIfStudentCanJoinIqSquad() {
     console.log("chekking for house squads");
     if (
       chosenStudent.bloodStatus === "Pure-blood" &&
       chosenStudent.house === "Slytherin"
     ) {
-      makeSquad();
+      makeIqMember();
     } else {
       alert(
         "Looks like you aren't a pureblood Slytherin! You can't join!"
@@ -651,23 +651,22 @@ function toggleSquad() {
     }
   }
 
-  function makeSquad() {
+  function makeIqMember() {
     if (systemIsHacked === true) {
       setTimeout(function () {
-        toggleSquad();
+        toggleIqMember();
       }, 1000);
     }
     allStudArray[index].squad = true;
     // document.querySelector("#isbtn").classList.add("clickedbutton");
   }
 
-  function removeSquad() {
+  function removeIqMember() {
     // document.querySelector("#isbtn").classList.remove("clickedbutton");
     if (systemIsHacked === true) {
       setTimeout(function () {
-        alert("Wuups.. Can't do that.. HA HA HA!");
+        alert("The system is hacked, remember? You can't do that.. MUHAHA!");
       }, 100);
-      //alert("Wuups.. Can't do that.. HA HA HA!");
     }
     allStudArray[index].squad = false;
   }
