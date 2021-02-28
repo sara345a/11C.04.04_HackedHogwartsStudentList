@@ -21,12 +21,12 @@ let studentTemplate = {
   middleName: "-not set yet-",
   nickName: "-not set yet-",
   photo: "-not set yet-",
+  gender: "-not set yet-",
   house: "-not set yet-",
   bloodStatus: "",
   expelled: false,
   prefect: false,
   squad: false,
- 
 };
 
 
@@ -347,15 +347,18 @@ function prepareObjects(jsonData) {
     } else {
       student.photo = null;
     }
-
+    //house
     const house = jsonObject.house.toLowerCase().trim();
     student.house = house.substring(0, 1).toUpperCase() + house.substring(1);
+
+    //gender
+    const genderTrimmed = jsonObject.gender.toLowerCase().trim();
+    student.gender = genderTrimmed.substring(0, 1).toUpperCase() + genderTrimmed.substring(1).toLowerCase();
 
     //House is already a seperate string so just adds the age to the object
     student.house = house.substring(0, 1).toUpperCase() + house.substring(1);
 
-     //Gender 
-     student.gender = jsonObject.gender; 
+  
      student.prefect = false;
 
      //blood
@@ -478,6 +481,7 @@ function openSingleStudent(student) {
   
   popup.querySelector(".house").textContent = student.house;
   popup.querySelector(".blodstatus").textContent = student.bloodStatus;
+  popup.querySelector(".gender").textContent = student.gender;
   document.querySelector("#house_crest").src = student.house + ".svg";
   if (student.photo != null) {
     popup.querySelector("#popup_student_pic").src = "images/" + student.photo;
@@ -680,7 +684,7 @@ function hackTheSystem() {
     thisIsMe.nickName = "The Hacker";
     thisIsMe.photo = "me.png";
     thisIsMe.house = "Hufflepuff";
-    thisIsMe.gender = "girl";
+    thisIsMe.gender = "Girl";
     thisIsMe.prefect = false;
     thisIsMe.expelled = false;
     thisIsMe.bloodStatus = "Pure-blood";
