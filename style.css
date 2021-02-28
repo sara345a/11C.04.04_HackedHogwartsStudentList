@@ -173,7 +173,7 @@ button#close {
 #popup article {
   position: relative;
   width: 90vw;
-  height: 80vh;
+  height: 65vh;
   max-width: 900px;
   margin: 4rem auto;
   flex-wrap: wrap;
