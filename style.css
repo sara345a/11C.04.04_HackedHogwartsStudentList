@@ -7,10 +7,6 @@
   box-sizing: border-box;
 }
 
-#hack {
-  cursor: pointer;
-}
-
 #search_container {
   display: flex;
   justify-content: flex-end;
@@ -149,6 +145,9 @@ button#close {
   cursor: pointer;
 }
 
+#hack {
+  cursor: pointer;
+}
 /*************************POPUP***********************/
 
 #popup_buttons {
