@@ -142,7 +142,6 @@ button#close {
   border-color: #0a0a0a;
   border-radius: 15px;
   text-align: center;
-  cursor: pointer;
 }
 
 #hack {
@@ -199,7 +198,7 @@ button#close {
   background: rgb(171, 99, 135);
 }
 
-/*******************TEST**************************/
+/*********ONLY TWO PREFECTS DIALOGBOX START*****************/
 
 .overlay {
   position: fixed;
@@ -216,7 +215,7 @@ button#close {
 .dialogcontent {
   width: 80vw;
   height: 60vw;
-  max-width: 500px;
+  max-width: 600px;
   max-height: 300px;
   margin: 4rem auto;
   flex-wrap: wrap;
@@ -268,7 +267,16 @@ h3#remove {
   max-width: 45px;
 }
 
-/*******************FOOTER******************/
+#thehacker_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+img#thehacker {
+  max-width: 90px;
+  align-self: center;
+}
 
 .clickedbutton {
   background-color: #a96800;

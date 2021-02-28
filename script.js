@@ -441,7 +441,7 @@ function openSingleStudent(student) {
     document.querySelector("#isbtn").classList.add("clickedbutton");
   }
 
-//show text from HTML, if the student is viewed again//
+//show text from HTML in POPUP, if the student is viewed again//
   if (student.expelled === true) {
     document.querySelector("#expelled_text").classList.remove("hide");
   }else {document.querySelector("#expelled_text").classList.add("hide"); } 
@@ -455,9 +455,7 @@ function openSingleStudent(student) {
   }else {document.querySelector("#squad_text").classList.add("hide"); } 
 
 
-
-
-
+//display students nicknames if there are any
   if (student.middleName == null && student.nickName == null) {
     if (student.lastName == null) {
       popup.querySelector("h2").textContent = student.firstName;
@@ -593,20 +591,20 @@ function togglePrefect() {
   function removeOther(other) {
     //ask the user to ignore ore remove the other
     document.querySelector("#onlytwoprefects").classList.remove("hide");
-    document.querySelector("#onlytwoprefects .closebutton").addEventListener("click", closeDialog);
-    document.querySelector("#onlytwoprefects [data-action=remove1]").addEventListener("click", clickRemoveOther);
+    document.querySelector("#onlytwoprefects .closebutton").addEventListener("click", closeOnlyTwoPrefectsDialog);
+    document.querySelector("#onlytwoprefects [data-action=remove_prefect_btn]").addEventListener("click", clickRemoveOther);
 
     //add name to button
     document.querySelector("#onlytwoprefects .prefect1").textContent = other.firstName;
 
     //if ignore - do nothing..
-    function closeDialog() {
+    function closeOnlyTwoPrefectsDialog() {
       document.querySelector("#onlytwoprefects").classList.add("hide");
       document
         .querySelector("#onlytwoprefects .closebutton")
-        .removeEventListener("click", closeDialog);
+        .removeEventListener("click", closeOnlyTwoPrefectsDialog);
       document
-        .querySelector("#onlytwoprefects [data-action=remove1]")
+        .querySelector("#onlytwoprefects [data-action=remove_prefect_btn]")
         .removeEventListener("click", clickRemoveOther);
     }
 
@@ -615,7 +613,7 @@ function togglePrefect() {
       removePrefect(other);
       makePrefect(chosenStudent);
       buildList();
-      closeDialog();
+      closeOnlyTwoPrefectsDialog();
     }
   }
 }
@@ -694,14 +692,31 @@ function hackTheSystem() {
     //fuck up blood-status
     systemIsHacked = true;
 
+    document.querySelector("#systemhacked").classList.remove("hide");
+    document.querySelector("#systemhacked .closebutton").addEventListener("click", closeSystemHackedDialog);
+
+
     buildList();
     setTimeout(function () {
-      alert("I hacked myself into the system and there isn't anything you can do about it!");
+      alert("MUHAHAHAHAAHAH");
     }, 100);
   } else {
-    alert("WARNING: You can't hack the system twice!");
+    alert("Wuups.. System's allready been hacked!");
   }
 }
+
+function closeSystemHackedDialog() {
+  document.querySelector("#systemhacked").classList.add("hide");
+   document.querySelector("#systemhacked .closebutton").removeEventListener("click", closeSystemHackedDialog);
+ }
+
+ 
+
+
+
+
+
+
 
 function messWithBloodstatus() {
   allStudArray.forEach((student) => {
