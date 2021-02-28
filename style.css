@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+#hack {
+  cursor: pointer;
+}
+
 #search_container {
   display: flex;
   justify-content: flex-end;
@@ -17,9 +21,10 @@
   border-color: #c47400;
   border-radius: 40px;
   border-width: 0.2vw;
-  max-width: 140px;
+  max-width: 150px;
   max-height: 25px;
   margin-right: 2vw;
+  padding: 8px;
 }
 
 img {
@@ -268,6 +273,14 @@ h3#remove {
 
 .clickedbutton {
   background-color: #a96800;
+  filter: drop-shadow(1px 2px 3px rgba(255, 255, 0, 0.211));
+}
+
+h1#secret_button {
+  font-size: 25px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  color: #a96800;
 }
 
 /*--------------------------------MEADIAQUERIES---------------------------------*/
@@ -286,10 +299,6 @@ h3#remove {
 
   #all_houses img {
     width: 250px;
-  }
-
-  h1 {
-    font-size: 25px;
   }
 
   #search_btn {

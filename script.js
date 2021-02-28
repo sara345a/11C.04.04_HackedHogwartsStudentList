@@ -44,6 +44,8 @@ let systemIsHacked = false;
 function initPage() {
   console.log("ready");
 
+  document.querySelector("#hack").addEventListener("click", hackTheSystem);
+
   readBtns();
 
   fetchStudentData();
@@ -81,7 +83,7 @@ function startSearch(event) {
   showStudentList(searchList);
 }
 
-//------------------FILTER FUNCTIONS START------------------------//
+//=====================FILTER FUNCTIONS START================================//
 function readBtns() {
   //adds an eventlistener to each filterbutton
   document
@@ -518,22 +520,23 @@ function openSingleStudent(student) {
         allStudArray.splice(allStudArray.indexOf(selectedStudent), 1);
         selectedStudent.expelled = true;
         selectedStudent.prefect = false;
+        selectedStudent.squad = false;
         explldStudArray.push(selectedStudent);
         document.querySelector("#expellbtn").classList.add("clickedbutton");
         document.querySelector("#prefectbtn").classList.remove("clickedbutton");
+        document.querySelector("#isbtn").classList.remove("clickedbutton");
         console.log("expell");
       } else {
-        alert("This student is allready expelled!");
-        console.log("This student is allready expelled");
-      }
-    } else {
-      alert(
-        `Sorry bro! Can't expell ${selectedStudent.firstname} "${selectedStudent.nickname}" ${selectedStudent.lastname}! 😝`
-      );
+      alert("This student is allready expelled!");
+      console.log("This student is allready expelled");
     }
-  
-    buildList();
+  } else {
+    let str = alert(
+      `WOOPS! ${selectedStudent.firstname} "${selectedStudent.nickname}" ${selectedStudent.lastname} has hacked the system and can not be expelled!`);
   }
+
+  buildList();
+}
 
 
 function togglePrefect() {
@@ -681,34 +684,34 @@ function hackTheSystem() {
     //add me to studentlist
     console.log("You have been hacked!");
     const thisIsMe = Object.create(studentTemplate);
-    thisIsMe.firstname = "Hansi";
-    thisIsMe.lastname = "Hinterseer";
+    thisIsMe.firstname = "Sara";
+    thisIsMe.lastname = "Nielsen";
     thisIsMe.middlename = null;
     thisIsMe.nickname = "The Hacker";
     thisIsMe.photo = "me.png";
     thisIsMe.house = "Hufflepuff";
-    thisIsMe.gender = "boy";
+    thisIsMe.gender = "girl";
     thisIsMe.prefect = false;
     thisIsMe.expelled = false;
     thisIsMe.bloodstatus = "Pure-blood";
     thisIsMe.squad = false;
     messWithBloodstatus();
-    allStudents.unshift(thisIsMe);
+    allStudArray.unshift(thisIsMe);
 
     //fuck up blood-status
     systemIsHacked = true;
 
     buildList();
     setTimeout(function () {
-      alert("The Dark Lord is back, you have been hacked!!! ☠ ☠ ☠");
+      alert("I hacked myself into the system and there isn't anything you can do about it!");
     }, 100);
   } else {
-    alert("Wuups.. System's allready been hacked!");
+    alert("WARNING: You can't hack the system twice!");
   }
 }
 
 function messWithBloodstatus() {
-  allStudents.forEach((student) => {
+  allStudArray.forEach((student) => {
     if (student.bloodstatus === "Muggle-born") {
       student.bloodstatus = "Pure-blood";
     } else if (student.bloodstatus === "Half-blood") {
