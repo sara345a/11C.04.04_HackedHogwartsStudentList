@@ -39,6 +39,7 @@ let sortBy = "sorting";
 const search = document.querySelector(".search");
 search.addEventListener("input", startSearch);
 let numberOfStudents = document.querySelector(".studentnumber");
+let systemIsHacked = false;
 
 function initPage() {
   console.log("ready");
@@ -426,19 +427,19 @@ function showStudentList(students) {
 function openSingleStudent(student) {
   popup.style.display = "block";
 
-  //make it visible that the expelledbutton is clicked//
+  //make it visible that the expelledbutton, prefectbutton, squadbutton is clicked//
   if (student.expelled != true) {
     document.querySelector("#expellbtn").classList.remove("clickedbutton");
   } else {
     document.querySelector("#expellbtn").classList.add("clickedbutton");
   }
-//make it visible that the prefectbutton is clicked//
+//--""--
   if (student.prefect != true) {
     document.querySelector("#prefectbtn").classList.remove("clickedbutton");
   } else {
     document.querySelector("#prefectbtn").classList.add("clickedbutton");
   }
-//make it visible that the squadbutton is clicked//
+//--""--
   if (student.squad != true) {
     document.querySelector("#isbtn").classList.remove("clickedbutton");
   } else {
@@ -457,8 +458,6 @@ function openSingleStudent(student) {
   if (student.squad === true) {
     document.querySelector("#squad_text").classList.remove("hide");
   }else {document.querySelector("#squad_text").classList.add("hide"); } 
-
-
 
 
 
@@ -487,8 +486,7 @@ function openSingleStudent(student) {
   
   popup.querySelector(".house").textContent = student.house;
   popup.querySelector(".blodstatus").textContent = student.bloodstatus;
-  popup.querySelector("#house_crest").src =
-    "housecrests/" + student.house + ".svg";
+  document.querySelector("#house_crest").src = student.house + ".svg";
   if (student.photo != null) {
     popup.querySelector("#popup_student_pic").src = "images/" + student.photo;
   } else {
@@ -678,3 +676,52 @@ function toggleSquad() {
   }
 }
 
+function hackTheSystem() {
+  if (systemIsHacked === false) {
+    //add me to studentlist
+    console.log("You have been hacked!");
+    const thisIsMe = Object.create(studentTemplate);
+    thisIsMe.firstname = "Hansi";
+    thisIsMe.lastname = "Hinterseer";
+    thisIsMe.middlename = null;
+    thisIsMe.nickname = "The Hacker";
+    thisIsMe.photo = "me.png";
+    thisIsMe.house = "Hufflepuff";
+    thisIsMe.gender = "boy";
+    thisIsMe.prefect = false;
+    thisIsMe.expelled = false;
+    thisIsMe.bloodstatus = "Pure-blood";
+    thisIsMe.squad = false;
+    messWithBloodstatus();
+    allStudents.unshift(thisIsMe);
+
+    //fuck up blood-status
+    systemIsHacked = true;
+
+    buildList();
+    setTimeout(function () {
+      alert("The Dark Lord is back, you have been hacked!!! ☠ ☠ ☠");
+    }, 100);
+  } else {
+    alert("Wuups.. System's allready been hacked!");
+  }
+}
+
+function messWithBloodstatus() {
+  allStudents.forEach((student) => {
+    if (student.bloodstatus === "Muggle-born") {
+      student.bloodstatus = "Pure-blood";
+    } else if (student.bloodstatus === "Half-blood") {
+      student.bloodstatus = "Pure-blood";
+    } else {
+      let bloodNumber = Math.floor(Math.random() * 3);
+      if (bloodNumber === 0) {
+        student.bloodstatus = "Muggle-born";
+      } else if (bloodNumber === 1) {
+        student.bloodstatus = "Half-blood";
+      } else {
+        student.bloodstatus = "Pure-blood";
+      }
+    }
+  });
+}
