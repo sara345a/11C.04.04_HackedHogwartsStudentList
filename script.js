@@ -24,7 +24,6 @@ let studentTemplate = {
   house: "-not set yet-",
   bloodStatus: "",
   expelled: false,
-  member: "",
   prefect: false,
   squad: false,
  
