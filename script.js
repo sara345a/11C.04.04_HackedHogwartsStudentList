@@ -490,7 +490,7 @@ function displaySingleStudentPopUp(student) {
   }
 
   //expell, prefect and squad
-  document.querySelector("#expellbtn").addEventListener("click", expell);
+  document.querySelector("#expellbtn").addEventListener("click", expellStudent);
   document.querySelector("#prefectbtn").addEventListener("click", togglePrefect);
   document.querySelector("#isbtn").addEventListener("click", toggleIqMember);
 
